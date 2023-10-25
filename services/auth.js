@@ -9,6 +9,7 @@ export function createToken(user) {
     const token = jwt.sign(payload, secret);
     return token;
 }
+
 /**
  * @description Función que devuelve un JWS token
  * @param {string} user
