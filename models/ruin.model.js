@@ -1,3 +1,4 @@
+import { string } from 'joi';
 import mongoose from 'mongoose';
 
 export function ruinCreator(modelName = 'Ruin') {
@@ -14,7 +15,10 @@ export function ruinCreator(modelName = 'Ruin') {
                 sparse: true,
             },
         ],
-        coords:[String, String]
+        coords:[{
+            type: String,
+            type: String
+        }]
     });
 
     ruinSchema.set('toJSON', {
