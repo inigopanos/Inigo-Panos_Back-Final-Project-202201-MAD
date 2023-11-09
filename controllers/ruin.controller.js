@@ -44,6 +44,8 @@ export const addFavorite = async (req, res, next) => {
                 { new: true }
             );
         }
+        console.log('Datos user favorites:', updatedUserFavorites, '\n');
+
         res.status(200);
         res.json(updatedUserFavorites);
     } catch (error) {
@@ -55,6 +57,7 @@ export const addFavorite = async (req, res, next) => {
 export const addVisited = async (req, res, next) => {
     console.log(req.tokenPayload, ' en ruinController en back');
     console.log(req.params.id, ' en ruinController en back');
+    
     try {
         let currentUser = await User.findById({ _id: req.tokenPayload.userId });
 

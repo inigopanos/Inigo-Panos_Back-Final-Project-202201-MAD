@@ -14,6 +14,7 @@ export function ruinCreator(modelName = 'Ruin') {
                 sparse: true,
             },
         ],
+        coords:[Number, Number]
     });
 
     ruinSchema.set('toJSON', {
