@@ -31,7 +31,6 @@ export function ruinCreator(modelName = 'Ruin') {
     } else {
         Ruin = mongoose.model(modelName, ruinSchema);
     }
-    console.log('Se ha creado una nueva Ruina:', ruin);
     return Ruin;
 }
 
