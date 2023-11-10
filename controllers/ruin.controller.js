@@ -92,6 +92,7 @@ export const addVisited = async (req, res, next) => {
 
 export const getRuin = async (req, res, next) => {
     console.log(req.params.id);
+    console.log('Hola mundo');
     try {
         const resp = await Ruin.findById(req.params.id).populate({
             path: 'comments',
@@ -107,10 +108,8 @@ export const getRuin = async (req, res, next) => {
             ],
         });
 
-        console.warn('Resp de getRuin en back:', resp);
-
+        console.log('Resp de getRuin en back:');
         res.status(200);    
-        res.statusText(resp);
         res.json(resp);
     } catch (err) {
         next(err, 'no existe la ruina especificada.');
