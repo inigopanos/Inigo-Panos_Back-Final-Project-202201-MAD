@@ -41,7 +41,6 @@ export async function userLogin(req, res, next) {
                 name: 1,
             });
 
-        console.log(userFound, ' es admin?');
         res.json({ token, userId, userFound });
         return;
     } else {
