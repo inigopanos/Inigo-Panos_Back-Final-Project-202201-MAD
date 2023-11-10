@@ -15,7 +15,7 @@ export function ruinCreator(modelName = 'Ruin') {
             },
         ],
         coords:[{
-            type: Array
+            type: String
         }]
     });
 
