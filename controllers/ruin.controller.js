@@ -110,7 +110,7 @@ export const getRuin = async (req, res, next) => {
             ],
         });
 
-        console.log('Resp de getRuin en back:');
+        console.log('Resp de getRuin en back:', resp);
         res.status(200);    
         res.json(resp);
     } catch (err) {

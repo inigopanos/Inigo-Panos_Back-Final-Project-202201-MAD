@@ -15,8 +15,7 @@ export function ruinCreator(modelName = 'Ruin') {
             },
         ],
         coords:[{
-            type: Number,
-            type: Number
+            type: Array
         }]
     });
 
@@ -32,6 +31,7 @@ export function ruinCreator(modelName = 'Ruin') {
     } else {
         Ruin = mongoose.model(modelName, ruinSchema);
     }
+    console.log('Se ha creado una nueva Ruina:', ruin);
     return Ruin;
 }
 
