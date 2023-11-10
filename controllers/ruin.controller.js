@@ -107,6 +107,7 @@ export const getRuin = async (req, res, next) => {
             ],
         });
         res.status(200);
+        console.log('Resp de getRuin en back:', resp);
         res.json(resp);
     } catch (err) {
         next(err, 'no existe la ruina especificada.');
