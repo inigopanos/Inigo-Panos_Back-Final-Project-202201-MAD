@@ -5,7 +5,7 @@ export function ruinCreator(modelName = 'Ruin') {
         name: { type: String, required: true },
         location: { type: String, required: true },
         description: { type: String, required: true },
-        link: {type: String},
+        link: {type: String, required: true},
         images: { type: String, required: true, sparse: true },
         score: { type: Number, sparse: true },
         comments: [

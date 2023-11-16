@@ -7,7 +7,6 @@ export const getAllRuins = async (req, res, next) => {
     console.log('Ruinas = ', await Ruin.find({}));
     try {
         const resp = await Ruin.find({});
-        console.log('Resp get all ruins: ', resp);
         res.status(200);
         res.json(resp);
     } catch (err) {
