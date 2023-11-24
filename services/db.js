@@ -6,7 +6,6 @@ dotenv.config();
 export async function mongoConnect() {
     const userName = process.env.DBUSER;
     const password = process.env.DBPASSWD;
-    console.log('DB PSSWD:', password);
     let dbName;
     if (process.env.NODE_ENV === 'test') {
         dbName = process.env.DBNAMETEST;
