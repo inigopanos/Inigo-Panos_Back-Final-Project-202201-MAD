@@ -5,7 +5,8 @@ export function ruinCreator(modelName = 'Ruin') {
         name: { type: String, required: true },
         location: { type: String, required: true },
         description: { type: String, required: true },
-        images: { type: String, required: true, sparse: true },
+        link: {type: String, required: true},
+        images: [{ type: String, required: true, sparse: true }],
         score: { type: Number, sparse: true },
         comments: [
             {
@@ -14,6 +15,9 @@ export function ruinCreator(modelName = 'Ruin') {
                 sparse: true,
             },
         ],
+        coords:[{
+            type: String
+        }]
     });
 
     ruinSchema.set('toJSON', {

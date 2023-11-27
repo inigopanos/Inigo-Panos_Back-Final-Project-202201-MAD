@@ -4,6 +4,7 @@ import { User } from '../models/user.model.js';
 // USER
 export const getAllRuins = async (req, res, next) => {
     console.log(req.body);
+    console.log('Ruinas = ', await Ruin.find({}));
     try {
         const resp = await Ruin.find({});
         res.status(200);
@@ -44,6 +45,8 @@ export const addFavorite = async (req, res, next) => {
                 { new: true }
             );
         }
+        console.log('Datos user favorites:', updatedUserFavorites, '\n');
+
         res.status(200);
         res.json(updatedUserFavorites);
     } catch (error) {
@@ -55,6 +58,7 @@ export const addFavorite = async (req, res, next) => {
 export const addVisited = async (req, res, next) => {
     console.log(req.tokenPayload, ' en ruinController en back');
     console.log(req.params.id, ' en ruinController en back');
+    
     try {
         let currentUser = await User.findById({ _id: req.tokenPayload.userId });
 
@@ -89,6 +93,7 @@ export const addVisited = async (req, res, next) => {
 
 export const getRuin = async (req, res, next) => {
     console.log(req.params.id);
+    console.log('Hola mundo');
     try {
         const resp = await Ruin.findById(req.params.id).populate({
             path: 'comments',
@@ -103,7 +108,9 @@ export const getRuin = async (req, res, next) => {
                 },
             ],
         });
-        res.status(200);
+
+        console.log('Resp de getRuin en back:', resp);
+        res.status(200);    
         res.json(resp);
     } catch (err) {
         next(err, 'no existe la ruina especificada.');
