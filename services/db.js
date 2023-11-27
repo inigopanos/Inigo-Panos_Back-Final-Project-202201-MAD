@@ -13,7 +13,9 @@ export async function mongoConnect() {
     }
     const userName = process.env.DBUSER;
     const password = process.env.DBPASSWD;
-    
+    console.log('Username: ', userName, process.env.DBUSER);
+    console.log('Password: ', password, DBPASSWD);
+
     const uri = `mongodb+srv://${userName}:${password}@cluster0.piemq.mongodb.net/${dbName}?retryWrites=true&w=majority`;
     // const uri = `mongodb+srv://inigopanos:SmkJEOJot1X5Mbrc@cluster0.piemq.mongodb.net/${dbName}?retryWrites=true&w=majority`;
     console.log('Este es el uri:', uri);
