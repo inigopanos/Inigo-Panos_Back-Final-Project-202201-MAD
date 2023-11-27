@@ -9,8 +9,10 @@ export async function mongoConnect() {
     let dbName;
     if (process.env.NODE_ENV === 'test') {
         dbName = process.env.DBNAMETEST;
+        console.log('Nombre DB:', dbName);
     } else {
         dbName = process.env.DBNAME;
+        console.log('Nombre DB:', dbName);
     }
 
     const uri = `mongodb+srv://${userName}:${password}@cluster0.piemq.mongodb.net/${dbName}?retryWrites=true&w=majority`;
