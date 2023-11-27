@@ -14,7 +14,7 @@ export async function mongoConnect() {
     }
 
     // const uri = `mongodb+srv://${userName}:${password}@cluster0.piemq.mongodb.net/${dbName}?retryWrites=true&w=majority`;
-    const uri = `mongodb+srv://${userName}:SmkJEOJot1X5Mbrc@cluster0.piemq.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+    const uri = `mongodb+srv://inigopanos:SmkJEOJot1X5Mbrc@cluster0.piemq.mongodb.net/${dbName}?retryWrites=true&w=majority`;
     const mongooseConnect = await mongoose.connect(uri);
     return mongooseConnect;
 }
