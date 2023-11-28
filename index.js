@@ -17,10 +17,6 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
 
-app.get('/', function(req, res){
-    res.send(process.env.userName);
-})
-
 app.use('/users', usersRouter);
 app.use('/ruins', ruinsRouter);
 app.use('/comment', commentsRouter);
