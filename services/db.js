@@ -5,17 +5,17 @@ dotenv.config();
 
 export async function mongoConnect() {
    
-    let dbName;
+    let DBName;
     if (process.env.NODE_ENV === 'test') {
-        dbName = process.env.DBNAMETEST;
+        DBName = process.env.DBNAMETEST;
     } else {
-        dbName = process.env.DBNAME;
+        DBName = process.env.dbName;
     }
-    const userName = process.env.DBUSER;
-    const password = process.env.DBPASSWD;
+    const userName = process.env.userName;
+    const password = process.env.password;
    
-    const uri = `mongodb+srv://${userName}:${password}@cluster0.piemq.mongodb.net/${dbName}?retryWrites=true&w=majority`;
-    
+    const uri = `mongodb+srv://${userName}:${password}@cluster0.piemq.mongodb.net/${DBName}?retryWrites=true&w=majority`;
+
     const mongooseConnect = await mongoose.connect(uri);
     return mongooseConnect;
 }
