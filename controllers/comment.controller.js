@@ -7,7 +7,6 @@ export const deleteComment = async (req, res, next) => {
     try {
         const { id: ruinId, commentId } = req.params;
         const deletedComment = await Comment.findByIdAndDelete(commentId);
-        console.log(deletedComment, ' Comentario borrado');
 
         const resposne = await Ruin.findByIdAndUpdate(
             ruinId,
@@ -18,7 +17,6 @@ export const deleteComment = async (req, res, next) => {
         );
 
         const userId = req.tokenPayload.userId;
-        console.log(userId, 'ID DEL USUARIO DEL COMENTARIO');
         const responseUser = await User.findByIdAndUpdate(
             userId,
             {
@@ -53,8 +51,6 @@ export const deleteComment = async (req, res, next) => {
 };
 
 export const addComment = async (req, res, next) => {
-    // console.log(req.tokenPayload, 'req recibido en addComment');
-    console.log(req.body, 'req.body recibido en addComment');
     try {
         const ruinId = req.body.ruin_id;
         const userId = req.tokenPayload.userId;
@@ -95,9 +91,7 @@ export const addComment = async (req, res, next) => {
             response,
             responseUser,
         };
-        console.log('Comentario creado: ', resp);
-        console.log('Ruina actualizada, ', response);
-        console.log('Usuario actualizado, ', responseUser);
+
         res.status(201);
         res.json(resultOfPopulates);
     } catch (err) {
