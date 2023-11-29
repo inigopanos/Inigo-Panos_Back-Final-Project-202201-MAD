@@ -3,8 +3,6 @@ import { User } from '../models/user.model.js';
 
 // USER
 export const getAllRuins = async (req, res, next) => {
-    console.log(req.body);
-    console.log('Ruinas = ', await Ruin.find({}));
     try {
         const resp = await Ruin.find({});
         res.status(200);
@@ -15,8 +13,6 @@ export const getAllRuins = async (req, res, next) => {
 };
 
 export const addFavorite = async (req, res, next) => {
-    console.log(req.tokenPayload, ' en ruinController en back');
-    console.log(req.params.id, ' en ruinController en back');
     try {
         let currentUser = await User.findById({ _id: req.tokenPayload.userId });
 
@@ -45,19 +41,15 @@ export const addFavorite = async (req, res, next) => {
                 { new: true }
             );
         }
-        console.log('Datos user favorites:', updatedUserFavorites, '\n');
 
         res.status(200);
         res.json(updatedUserFavorites);
     } catch (error) {
-        console.log(error);
         next(error);
     }
 };
 
 export const addVisited = async (req, res, next) => {
-    console.log(req.tokenPayload, ' en ruinController en back');
-    console.log(req.params.id, ' en ruinController en back');
     
     try {
         let currentUser = await User.findById({ _id: req.tokenPayload.userId });
@@ -92,8 +84,6 @@ export const addVisited = async (req, res, next) => {
 };
 
 export const getRuin = async (req, res, next) => {
-    console.log(req.params.id);
-    console.log('Hola mundo');
     try {
         const resp = await Ruin.findById(req.params.id).populate({
             path: 'comments',
@@ -109,7 +99,6 @@ export const getRuin = async (req, res, next) => {
             ],
         });
 
-        console.log('Resp de getRuin en back:', resp);
         res.status(200);    
         res.json(resp);
     } catch (err) {
@@ -123,19 +112,15 @@ export const deleteRuin = async (req, res, next) => {
         res.status(202);
         res.json({ 'Deleted Ruin': req.params.id });
     } catch (err) {
-        console.log('Error al borrar la ruina');
         next(err, 'no se ha podido borrar la ruina especificada.');
     }
 };
 
 export const updateRuin = async (req, res, next) => {
-    console.log(req.body, ' req.body en update ruin');
-    console.log(req.params.id, ' id de la ruina en update ruin');
     try {
         const resp = await Ruin.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
         });
-        console.log(resp, ' RUINA ACTUALIZADA EN BACK');
         res.status(201);
         res.json(resp);
     } catch (err) {
@@ -144,7 +129,6 @@ export const updateRuin = async (req, res, next) => {
 };
 
 export const addRuin = async (req, res, next) => {
-    console.log(req.body, 'addRuin en back');
     try {
         const result = await Ruin.create(req.body);
         res.status(201);
