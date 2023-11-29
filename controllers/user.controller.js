@@ -18,7 +18,6 @@ export async function userLogin(req, res, next) {
         userName: userData.userName,
     });
 
-    console.log(resp, resp?.userName, userData?.userName);
 
     if (
         resp?.userName === userData?.userName &&
@@ -27,10 +26,8 @@ export async function userLogin(req, res, next) {
         userData._id = resp._id;
         let userId = userData._id;
         userId = userId.toString();
-        console.log(userId);
 
         const token = createToken(userData);
-        console.log('El token es: ', token, ' y el id: ', userId);
 
         const userFound = await User.findById(userId)
             .populate('comments')
@@ -84,14 +81,12 @@ export const loginWithToken = async (req, res, next) => {
 
             let userId = userFound._id;
             userId = userId.toString();
-            console.log(userFound, ' userFound en loginWith token');
             res.json({ token, userId, userFound });
         }
     }
 };
 
 export const getAllUsers = async (req, res, next) => {
-    console.log(req.body);
     try {
         const resp = await User.find({});
         res.json(resp);
@@ -101,7 +96,6 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const getUser = async (req, res, next) => {
-    console.log(req.body, 'getUser en userController');
     try {
         const resp = await User.findById(req.params.id)
             .populate({
@@ -120,7 +114,6 @@ export const getUser = async (req, res, next) => {
                 name: 1,
             });
 
-        console.log(resp, ' resp en getUser en back');
         res.status(200);
         res.json(resp);
     } catch (err) {
@@ -129,7 +122,6 @@ export const getUser = async (req, res, next) => {
 };
 
 export async function userRegister(req, res) {
-    console.log(req.body);
     if ((req.body.userName && req.body.password) !== '') {
         const encryptedPasswd = bcrypt.hashSync(req.body.password);
 
